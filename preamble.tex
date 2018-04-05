@@ -1,14 +1,15 @@
-\usepackage{zhlipsum}
-\usepackage{graphicx}
-\graphicspath{{Pictures/}}
-\usepackage{minted}
-\usepackage{filecontents}
-\usepackage{amsmath}
-\usepackage{subfiles}
+\usepackage{zhlipsum} % 提供生成中文随机文本指令\zhlipsum[n]，n：1--50
+\usepackage{codeshow} % 提供显示代码及其结果的环境codeshow
+\usepackage{graphicx} % 提供插图环境及指令
+\graphicspath{{Pictures/}} % 设定图片位置
+\usepackage{minted} % 提供代码抄录环境minted，行间单行抄录mint，行内抄录mintinline
+\usepackage{filecontents} % 提供导言区附加子文档的环境
+\usepackage{amsmath} % 常用数学公式环境
+\usepackage{subfiles} % 支持主文档与子文档各自编译
 \usepackage{tikz} % Required for drawing custom shapes
-\usepackage{tkz-euclide}
-\usepackage{colortbl}
-\usepackage{tabularx}
+\usepackage{tkz-euclide} % 常用几何图库
+\usepackage{colortbl} % 彩色表格
+\usepackage{tabularx} % 绘制表格
 \usepackage{xcolor} % Required for specifying colors by name
 \definecolor{ocre}{RGB}{0,126,196} % Define the orange color used for highlighting throughout the book
 
@@ -25,8 +26,9 @@
 \usepackage{makeidx} % Required to make an index
 \makeindex % Tells LaTeX to create the files required for indexing
 
+\newtheorem{qsT}{Q}[chapter] % 自定义qsT定理环境，显示为Q，计数器关联到章
+
 \usepackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
-\newtheorem{qsT}{Q}[chapter]
 
 % Essential Question box
 \newmdenv[skipabove=7pt,
@@ -44,9 +46,29 @@ innerbottommargin=5pt,
 leftmargin=0cm,
 rightmargin=0cm,
 linewidth=4pt]{essentialqBox}
-\newenvironment{qst}{\begin{essentialqBox}\begin{qsT}}{\end{qsT}\end{essentialqBox}}
-\newtheorem{jd}{A:}
-\newcommand{\ans}{{\small\bf\sffamily\color{ocre}A:}\; }
 
-\usepackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=true,breaklinks=true,urlcolor= ocre,bookmarks=true,bookmarksopen=false,pdftitle={\LaTeX{}技术交流群问题汇总},pdfauthor={Group members}}
+\newenvironment{qst}%
+{\begin{essentialqBox}\begin{qsT}}%
+{\end{qsT}\end{essentialqBox}} % 自定义qst环境，使用如上的盒子与定理格式
+
+\newtheorem{jd}{A:} % 自定义jd定理环境，显示为A:
+\newcommand{\ans}{{\small\bf\sffamily\color{ocre}A:}\; } % 自定义解答指令ans，显示A:
+
+%\newif\ifcompile\compilefalse
+\newif\ifcompile\compiletrue
+
+\usepackage{hyperref} % 提供交叉引用等的超链接功能
+\hypersetup{%
+	hidelinks,        % 隐藏链接，不显示链接的颜色及边框
+	backref=true,     % 反向链接，返回引用处所在节，默认只有正向引用
+	pagebackref=true, % 反向链接，返回引用处所在页，默认只有正向引用
+%	hyperindex=true,  % 生成索引的页码链接，默认生成
+	colorlinks=true,  % 链接改为彩色显示，默认为红色边框
+	breaklinks=true,  % 允许链接折行，默认不允许
+	urlcolor= ocre,   % 网址链接的颜色，默认为magenta
+	linkcolor=blue,   % 页码和序号等链接的颜色，默认为red
+%	bookmarks=true,   % 在PDF文档中创建书签目录，默认创建
+	bookmarksopen=false, % 展开书签目录展开深度内所有章节标题，默认只展开章标题
+	pdftitle={\LaTeX{}技术交流群问题汇总}, % 设置PDF文档属性中标题字段，默认为空
+	pdfauthor={Group members} % 设置PDF文档属性中作者字段，默认为空
+}

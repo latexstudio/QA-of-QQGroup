@@ -1,0 +1,28 @@
+% -*- coding: utf-8 -*-
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{codeshow}[2014/07/05 v0.0.1 Show code and its result]
+\RequirePackage{verbatim,xcolor}
+
+\newbox\savedlines
+\newtoks\savedtokens
+
+\def\codeshow{%
+  \global\savedtokens={}%
+  \def\verbatim@processline{%
+    {\setbox0=\hbox{\the\verbatim@line}%
+     \hsize=\wd0
+     \the\verbatim@line\par}%
+    \global\savedtokens=\expandafter{\the\expandafter\savedtokens\the\verbatim@line^^J}}%
+  \@tempswatrue
+  \setbox0=\vbox\bgroup\parskip=0pt\topsep=0pt\partopsep=0pt
+  \verbatim}
+\def\endcodeshow{\endverbatim%
+  \unskip\setbox0=\lastbox\egroup
+  \global\setbox\savedlines=\box0
+  \addvspace{1em}\par\noindent%
+  \colorbox{lightgray}{%
+    \begin{minipage}{.55\textwidth}{\usebox\savedlines}\end{minipage}}%
+  \hfill\fbox{\parbox{.40\textwidth}%
+    {\scantokens\expandafter{\the\savedtokens\unskip\endinput}}}%
+  \par\addvspace{1em}}
