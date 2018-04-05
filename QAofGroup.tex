@@ -1,0 +1,43 @@
+%!Mode:: "TeX:Hard:UTF-8"
+%!TEX program = xelatex
+\documentclass[orange]{tjbook}
+\input{preamble}
+
+\title{\LaTeX{}技术交流群问题汇总}
+\DedicatedTo{懵晕在厕所的群主}
+\subtitle{纯属虚度}
+\author{Group members}% 默认值
+\BookSeries{剩闲丛书}% 可取消
+\BookIntroduction{桔神杰作\par \,E\,神润色\par 啸神护法\par 圡人愚乐\par 还有一帮求妹子}
+%\BookIntroduction{这个图书模板是在群主网站上的一个封面模板的基础上改写而成的，设定了一些图书出版要素，设计了封面、扉页及版权页和封底的样式，修改了chapter的样式，并提供了几个选项可切换色彩风格，其余则维持book基本文档类的设定。\par 图书模板部分代码的完成得到了林莲枝大神的帮助，在此表示感谢。由于作者水平有限，模板代码编写不恰当之处还请用户提出批评和指正。\par 感谢造字工坊提供了刻宋、郎宋和黄金时代三种非商业可免费下载使用的字体。\par 感谢谷歌提供自由使用的思源宋体、思源黑体。\par 感谢文泉驿提供的开源的文泉驿等宽微米黑字体。}
+\Publisher{\LaTeX Studio 求妹子科系} %默认值
+\Designer{桔大神}
+\Editor{何足道}
+\edition{1}% 可取消
+\Price{4.21}
+%\isbn{978-80-7340-097-2}
+
+
+\begin{document}
+\maketitle
+\makeflypage
+\frontmatter
+\tableofcontents
+
+\mainmatter
+%\chapter{测试}
+\subfile{date20180404}
+%\section{测试小节}
+%\zhlipsum[2-8]
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	INDEX
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+\cleardoublepage
+%\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{索引}}
+\printindex
+
+\makebackcover
+\end{document} 
