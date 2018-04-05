@@ -70,7 +70,7 @@
 \else
 \fi
 \ifTJ@violet
-\definecolor{cvgreen}{RGB}{178,10,142}
+\definecolor{cvgreen}{RGB}{196,10,100}%{178,10,142}
 \definecolor{cvgray}{RGB}{209,181,217}
 \definecolor{cvtext}{RGB}{100,100,100}
 \else
