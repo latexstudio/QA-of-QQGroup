@@ -1,0 +1,50 @@
+\usepackage{zhlipsum}
+\usepackage{graphicx}
+\graphicspath{{Pictures/}}
+\usepackage{minted}
+\usepackage{filecontents}
+\usepackage{amsmath}
+\usepackage{subfiles}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{0,126,196} % Define the orange color used for highlighting throughout the book
+
+%== RED
+
+\definecolor{sthlmLightRed}{RGB}{254,222,237} % HEX #c40064
+\newcommand{\csthlmLightRed}[1]{{\color{sthlmLightRed}{#1}}}
+\definecolor{sthlmRed}{RGB}{196,0,100} % HEX #fedeed
+\newcommand{\csthlmRed}[1]{{\color{sthlmRed}{#1}}}
+%\definecolor{sthlmDarkRed}{RGB}{} % HEX #
+%\newcommand{\csthlmDarkRed}[1]{{\color{sthlmDarkRed}{#1}}}
+
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+\usepackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+\newtheorem{qsT}{Q}[chapter]
+
+% Essential Question box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=false,
+topline=true,
+bottomline=true,
+backgroundcolor=sthlmRed!5,
+linecolor=sthlmRed,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{essentialqBox}
+\newenvironment{qst}{\begin{essentialqBox}\begin{qsT}}{\end{qsT}\end{essentialqBox}}
+\newtheorem{jd}{A:}
+\newcommand{\ans}{{\small\bf\sffamily\color{ocre}A:}\; }
+
+\usepackage{hyperref}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=true,breaklinks=true,urlcolor= ocre,bookmarks=true,bookmarksopen=false,pdftitle={\LaTeX{}技术交流群问题汇总},pdfauthor={Group members}}
