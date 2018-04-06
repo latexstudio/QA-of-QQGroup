@@ -1,0 +1,68 @@
+% !Mode:: "TeX:UTF-8"
+\documentclass[QAofGroup.tex]{subfiles}
+
+\begin{document}
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	CHAPTER
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%%================================================================
+\chapter{20180208}\label{ch180208}
+%----------------------------------------------------------------------------------------
+
+\begin{qst}\label{Q2018020801}
+ 请问如何在maketitle之后得到的title的值？\index{得到title的值}
+\end{qst}
+\ans 使用\verb|\@title|，但是 \verb|\maketitle| 以后就把这个清空了。
+在 \verb|\maketitle| 之前可以把这个值给另一个宏。
+例如
+\begin{verbatim}
+\makeatletter
+\let\mytitle\@title
+\makeatother
+\end{verbatim}
+然后就可以在正文里使用\verb|\mytitle|得到title的值。
+
+\begin{qst}\label{Q2018020802}
+ 如何让WinEdt正确打开utf-8编码的文档？\index{WinEdt utf-8 }
+\end{qst}
+\ans 记事本或者notepad++打开，第一行加这么一句
+\verb|% !Mode:: "TeX:UTF-8"|
+可以解决winedt打开utf-8编码文件的问题。
+
+也可以在WinEdt中，【File】-【Open】（或使用快捷键Ctrl+O），在弹出的打开对话框中，右下角【文件名】右侧有一个打开扩展名方式，默认是default(*.*)形式，点击下三角号，选择UTF-8(*.*)形式。再选择相应的.tex文件打开即可。
+
+\begin{qst}\label{Q2018020803}
+ 请问错误提醒缺少array宏包，Tex Live Mannager2017更新的那里选择哪个？\index{安装array宏包}
+\end{qst}
+\ans 可以在命令行运行 tlmgr install --reinstall tools
+
+\begin{qst}\label{Q2018020804}
+ 如何在文本中输入希腊字母？\index{希腊字母}
+\end{qst}
+\ans 宏包upgreek是在数学模式的，文本里用 textgreek。
+还有一个宏包chemgreek，对这几个有直立希腊字母，做了一个统一的接口来调用。 此宏包在 Clemens Niederberger 开发的一系列以 chemmacro 为主打宏包的化学宏包套件中。
+
+\begin{qst}\label{Q2018020805}
+ 找不到slashbox宏包？\index{slashbox}
+\end{qst}
+\ans 这个宏包过时了，建议改用diagbox宏包。
+
+\begin{qst}\label{Q2018020806}
+ 中文随机文本如何产生？\index{中文随机文本}
+\end{qst}
+\ans 中文随机文本用zhlipsum宏包，类似于lipsum宏包，用法都是差不多的，只是中文的这个只有50个段落。
+
+\begin{qst}\label{Q2018020807}
+ 问下怎么让第一段首行缩进呢？\index{首行缩进}
+\end{qst}
+\ans 不建议第一段首行缩进。如果想缩进，可以用indentfirst宏包。
+
+%\begin{qst}\label{Q2018020808}
+%	问下怎么让第一段首行缩进呢？\index{首行缩进}
+%\end{qst}
+%\ans 
+
+\end{document} 
