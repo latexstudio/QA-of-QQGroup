@@ -3,8 +3,11 @@
 \usepackage{graphicx} % 提供插图环境及指令
 \graphicspath{{Pictures/}} % 设定图片位置
 \usepackage{minted} % 提供代码抄录环境minted，行间单行抄录mint，行内抄录mintinline
+\newcommand{\mtl}[1]{\mintinline{tex}|#1|}
+\newcommand{\mt}[1]{\mint[breaklines]{tex}|#1|}
 \usepackage{filecontents} % 提供导言区附加子文档的环境
 \usepackage{amsmath} % 常用数学公式环境
+\usepackage{mathtools} % 扩展了amsmath宏包
 \usepackage{subfiles} % 支持主文档与子文档各自编译
 \usepackage{tikz} % Required for drawing custom shapes
 \usepackage{tkz-euclide} % 常用几何图库
@@ -60,8 +63,8 @@ linewidth=4pt]{essentialqBox}
 \usepackage{hyperref} % 提供交叉引用等的超链接功能
 \hypersetup{%
 	hidelinks,        % 隐藏链接，不显示链接的颜色及边框
-	backref=true,     % 反向链接，返回引用处所在节，默认只有正向引用
-	pagebackref=true, % 反向链接，返回引用处所在页，默认只有正向引用
+%	backref=true,     % 反向链接，返回引用处所在节，默认只有正向引用
+%	pagebackref=true, % 反向链接，返回引用处所在页，默认只有正向引用
 %	hyperindex=true,  % 生成索引的页码链接，默认生成
 	colorlinks=true,  % 链接改为彩色显示，默认为红色边框
 	breaklinks=true,  % 允许链接折行，默认不允许

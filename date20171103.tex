@@ -31,10 +31,10 @@
 \includegraphics[width=0.45\textwidth]{pic09.png}
 \end{qst}
 \ans
-\begin{verbatim}
+\begin{minted}[breaklines]{tex}
 \newcommand{\chuizhi}[2]
  {\draw[thick,red]($ (#1)!0.15!(#2) $)
-  coordinate(c1)--($ (c1)!1!-90:(#1) $)coordinate(c2)--($ (c2)!1!-90:(c1) $);}
+  coordinate(c1)--($ (c1)!1!-90:(#1) $) coordinate(c2) -- ($ (c2)!1!-90:(c1) $);}
 \begin{tikzpicture}
 %画直角坐标系
 \draw[thick,-latex](-3,0)--(3,0)node[below]{$ x $};
@@ -67,7 +67,7 @@ coordinate(c1)--($ (c1)!1!-90:(H) $)coordinate(c2)--($ (c2)!1!-90:(c1) $);
 \foreach \x in {P,f1,f2,B,A,N,H,g}
 \shade[ball color=red](\x)circle(1.3pt);
 \end{tikzpicture}
-\end{verbatim}
+\end{minted}
 \newcommand{\chuizhi}[2]{\draw[thick,red]($ (#1)!0.15!(#2) $)coordinate(c1)--($ (c1)!1!-90:(#1) $)coordinate(c2)--($ (c2)!1!-90:(c1) $);}
 \begin{tikzpicture}
 %画直角坐标系
