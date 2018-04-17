@@ -1,5 +1,140 @@
 % !Mode:: "TeX:UTF-8"
 \documentclass[QAofGroup.tex]{subfiles}
+<<<<<<< HEAD
+\begin{filecontents*}{liuchengtu1.tex}
+\documentclass{standalone}
+\usepackage{ctex}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{setspace}
+
+% 流程图定义基本形状
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 1em, minimum height=0.8cm, text centered, draw = black]
+\tikzstyle{io} = [trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=1.5cm, minimum height=0.8cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=1em, minimum height=0.8cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, aspect = 0.3, text centered, draw=black]
+% 箭头形式
+\tikzstyle{arrow} = [->,>=stealth]
+
+\begin{document}
+\begin{tikzpicture}[node distance=0.5cm]
+		%定义流程图具体形状
+		\node[startstop](start){\parbox{1em}{初始结构}};
+		\node[process, right of = start, xshift = 1.6cm] (ganxi) {\parbox{1em} {杆系结构}};
+		\node[process, right  of = ganxi, xshift = 1.8cm] (lianxuti) {\parbox{1em} {连续体结构}};
+		\node[decision, right of = lianxuti, xshift = 4.5cm] (sltj) {\parbox{1em} {控制条件}};
+		\node[startstop, right of = sltj, xshift = 2.5cm] (out1) {\parbox{1em} {新结构}};
+		\coordinate (point1) at (6cm, -3cm);
+		\coordinate (point2) at (3.15cm, 0cm);
+		
+		%连接具体形状
+		\draw [arrow] (start) -- (ganxi);
+		\draw [arrow] (ganxi) -- (lianxuti);
+		\draw [arrow] (lianxuti) --node [above] {消除、增殖} (sltj);
+		\draw [arrow](sltj) --node [above] {是} (out1);
+		\draw (sltj) |-node [above, xshift=-3.5cm] {否} (point1);
+		\draw [arrow](point1) -| (point2);
+\end{tikzpicture}
+
+\end{document}
+\end{filecontents*}
+
+\begin{filecontents*}{liuchengtu2.tex}
+\documentclass{standalone}
+\standaloneconfig{border=0.7cm}
+\usepackage[UTF8,cap,nofonts]{ctex} %,fancyhdr,hyperref winfonts,nofonts
+\usepackage{amsmath,amssymb}
+\usepackage{pst-blur}
+\usepackage{pstricks-add}
+
+% set up fonts
+\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}] {Adobe Song Std}
+\setCJKsansfont{Adobe Heiti Std}
+\setCJKmonofont{Adobe Kaiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{fs}{Adobe Fangsong Std}
+\setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\pagestyle{empty}
+
+\begin{document}
+\psset{shadowcolor=black!70, shadowangle=-90, blur, shortput=nab}
+\begin{psmatrix}[rowsep=0.7, colsep=0.7]
+  \psovalbox[fillstyle=solid, fillcolor=yellow!30, shadow=true]{开始} \\
+  \psparallelogrambox[fillstyle=solid, fillcolor=blue!20, shadow]{输入r} \\
+  \psdiabox[fillstyle=solid, fillcolor=magenta!20, shadow=true]{$ r > 0 $} &
+  \psparallelogrambox[fillstyle=solid, fillcolor=blue!20, shadow=true]{打印m, d, s} \\
+  \psframebox[shadow=true]{$ d=2*r $}  & 
+  \psovalbox[fillstyle=solid, fillcolor=yellow!30, shadow=true]{结束}\\
+  \psframebox[shadow=true]{$ m=2*\pi*r $}  \\
+  \psframebox[shadow=true]{$ s=\pi*r*r $}  \\
+  \psparallelogrambox[fillstyle=solid, fillcolor=blue!20, shadow=true]{打印求和} 
+\end{psmatrix}
+\ncline{->}{1,1}{2,1}\ncline{->}{2,1}{3,1}
+\ncline{->}{3,1}{4,1}_{\textcolor{red}{是}}
+\ncline{->}{4,1}{5,1}\ncline{->}{5,1}{6,1}
+\ncline{->}{6,1}{7,1}
+\ncline{->}{3,1}{3,2}^{\textcolor{red}{否}}
+\ncline{->}{3,2}{4,2}
+\ncangles[angleA=-90, angleB=180, armA=0.5cm, armB=0.7cm]{->}{7,1}{3,1}
+\end{document}
+\end{filecontents*}	
+
+\begin{filecontents*}{liuchengtu3.tex}
+%by 汤
+\documentclass[tikz,border=8pt]{standalone}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows,arrows.meta}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+\everymath{\displaystyle}
+\usepackage{unicode-math}
+\setmainfont{XITS}
+\setmathfont{XITS Math}
+\begin{document}
+	% 箭头形式
+	\tikzstyle{arrow}=[arrows={-Stealth[scale=0.7]}]
+	% 流程图定义阴影
+	\tikzstyle{shadow}=[preaction={fill=black,opacity=.5, transform canvas={xshift=0.5mm, yshift=-0.5mm}, shading=radial, shading angle=20}, fill=red]
+	% 流程图定义基本形状
+	\tikzstyle{ellipse}=[draw, rectangle, minimum width=2.8em, rounded corners=6pt, line width=0.5pt]
+	% minimum height=1.5em, fill=red!20 椭圆
+	\tikzstyle{pxsbx}=[trapezium, trapezium left angle=75, trapezium right angle=105, minimum width=3em, text centered, draw = black, fill=white,line width=0.5pt] 
+	%平行四边形
+	\tikzstyle{lingxing}=[draw,diamond,shape aspect=3, inner sep = 0.4pt, thick,font=\itshape, line width=0.5pt]
+	% minimum size=8mm 菱形
+	\begin{tikzpicture}[node distance=1.2cm]
+	%定义流程图具体形状
+	\node (start) [ellipse,inner sep=1.5pt, shadow, fill=yellow!30] {开始};
+	\node (shurur) [pxsbx, below of=start, node distance=1.0cm, inner sep=1.5pt, shadow,fill=blue!20] {输入$\!r$};
+	\node (tiaojian) [lingxing,draw, below of=shurur,inner sep=1.5pt,shadow,fill=magenta!20] {$r>0$}; % 条件框
+	\node (shi1) [minimum height=0cm, draw, below of=tiaojian,inner sep=2pt,node distance=1.1cm] {$d=2*r$};
+	\node (shi2) [minimum height=0cm, draw, below of=shi1,inner sep=2pt,node distance=1.0cm] {$m=2*\pi*r$};
+	\node (shi3) [minimum height=0cm, draw, below of=shi2,inner sep=2pt,node distance=1.0cm] {$s=\pi*r*r$};
+	\node (dayinshi) [pxsbx,below of=shi3, node distance=1.0cm,inner sep=1.5pt,shadow,fill=blue!20] {打印求和};
+	\node (dayinfou) [right of=tiaojian, draw, pxsbx, inner sep=1.5pt, node distance=2.65cm,shadow, fill=blue!20]  {打印 $m,d,s$}; 
+	\node (end) [below of=dayinfou, draw, ellipse, inner sep=1.5pt, node distance=1.1cm, shadow, fill=yellow!30]  {结束};
+	%连接具体形状
+	\draw[arrow](start) -- (shurur);
+	\draw[arrow](shurur) -- (tiaojian) ;
+	\draw[arrow](tiaojian) -- node[left=-0.5mm,red] {是}(shi1);
+	\draw[arrow](shi1) -- (shi2);
+	\draw[arrow](shi2) -- (shi3);
+	\draw[arrow](shi3)--(dayinshi);
+	\draw[arrow](dayinshi) -- ++(0,-0.6)-- ++(-1.5,0) |- (tiaojian);
+	\draw[arrow](tiaojian) -- node[midway,above=-1mm,red] {否}(dayinfou);
+	\draw[arrow](dayinfou)--(end);
+	\end{tikzpicture}
+\end{document}
+\end{filecontents*}	
+=======
+>>>>>>> master
 
 \begin{document}
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -12,6 +147,142 @@
 \chapter{20180414}\label{ch180414}
 %----------------------------------------------------------------------------------------
 \begin{qst}\label{Q2018041401}
+<<<<<<< HEAD
+	如何绘制流程图\index{流程图}?
+\end{qst}
+\ans 可以使用TiKZ和Pstricks.
+
+使用Tikz可以参照这样的例子:
+\inputminted[fontsize=\normalsize,linenos,breaklines]{tex}{liuchengtu1.tex}
+\ifcompile\immediate\write18{xelatex liuchengtu1.tex}\fi
+\begin{center}
+	\includegraphics[width = 0.5\linewidth]{liuchengtu1.pdf}
+\end{center}
+
+使用Pstricks可以参照这样的例子:
+\inputminted[fontsize=\normalsize,linenos,breaklines]{tex}{liuchengtu2.tex}
+\ifcompile\immediate\write18{xelatex liuchengtu2.tex}\fi
+\begin{center}
+	\includegraphics[width = 0.5\linewidth]{liuchengtu2.pdf}
+\end{center}
+
+这个流程图也可以用Tikz来绘出:
+\inputminted[fontsize=\normalsize,linenos,breaklines]{tex}{liuchengtu3.tex}
+\ifcompile\immediate\write18{xelatex liuchengtu3.tex}\fi
+\begin{center}
+	\includegraphics[width = 0.5\linewidth]{liuchengtu3.pdf}
+\end{center}
+
+\begin{qst}\label{Q2018041402}
+	如何表示$n$重复合函数？\index{复合函数}
+\end{qst}
+\ans 可以使用类似这样的方式.
+\mt{f^{[n]}(x)=\underbrace{f\Bigl[f\bigl[f\cdots f}_n (x)\bigr]\Bigr]}
+\[
+f^{[n]}(x)=\underbrace{f\Bigl[f\bigl[f\cdots f}_n (x)\bigr]\Bigr]
+\]
+
+\begin{qst}\label{Q2018041403}
+	Beamer里图表没有编号怎么办？\index{Beamer图表编号}
+\end{qst}
+\ans Beamer默认的图表的caption不带编号, 这是合理的, 也是符合惯例的, 但总有人喜欢加编号,
+可以通过如下指令设置.
+\mt{\setbeamertemplate{caption}[numbered]}
+
+\begin{qst}\label{Q2018041404}
+	Beamer里段落默认是左对齐, 如何改为分散对齐？\index{Beamer分散对齐}
+\end{qst}
+\ans Beamer默认的图表的caption不带编号, 
+ 可以调用宏包\mtl{\usepackage{ragged2e}}, 
+ 然后通过如下指令设置.
+\mt{\justifying
+	\let\raggedright
+	\justifying
+}
+
+\begin{qst}\label{Q2018041405}
+	如何在Tikz里绘制对数曲线？\index{Tikz对数曲线}
+\end{qst}
+\ans 可以使用类似如下代码.
+\begin{minted}[breaklines]{tex}
+\tikzset{elegant/.style={domain=0.05:5, thick, samples=201, magenta, line cap=rect, line join=bevel}}
+\begin{tikzpicture}[>=stealth]
+% draw the axis
+\draw[->] (0,0) -- (5.5,0) node[above] {$x$};
+\draw[->] (0,-3.5) -- (0,3.5) node[right] {$y$};
+\draw[elegant] plot (\x,{ln(\x)});
+\foreach \x/\xtext in {1/1, 2/2, 3/3, 4/4, 5/5}
+\draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {\small $\xtext$};
+\foreach \y/\ytext in {-3/-3, -2/-2, -1/-1, 0/0, 1/1, 2/2, 3/3}
+\draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{minted}
+\begin{center}
+\tikzset{elegant/.style={domain=0.05:5,thick,samples=201,magenta,line cap=rect,line join=bevel}}
+\begin{tikzpicture}[>=stealth]
+% draw the axis
+\draw[->] (0,0) -- (5.5,0) node[above] {$x$};
+\draw[->] (0,-3.5) -- (0,3.5) node[right] {$y$};
+\draw[elegant] plot (\x,{ln(\x)});
+\foreach \x/\xtext in {1/1, 2/2, 3/3, 4/4, 5/5}
+\draw[shift={(\x,0)}] (0pt,2pt) -- (0pt,-2pt) node[below] {\small $\xtext$};
+\foreach \y/\ytext in {-3/-3, -2/-2, -1/-1, 0/0, 1/1, 2/2, 3/3}
+\draw[shift={(0,\y)}] (2pt,0pt) -- (-2pt,0pt) node[left] {$\ytext$};
+\end{tikzpicture}
+\end{center}
+
+\begin{qst}\label{Q2018041406}
+  请大家给说说怎么样才能把分子给换行？\index{分子换行}
+\end{qst}
+\ans 可以看看mathtools宏包的splitfrac和splitdfrac.
+\begin{minted}{tex}
+\[
+a=\frac{
+        \splitfrac{xy + xy + xy + xy + xy}
+                  {+ xy + xy + xy + xy}
+       }
+       {z}
+ =\frac{
+        \splitdfrac{xy + xy + xy + xy + xy}
+                   {+ xy + xy + xy + xy}
+       }
+       {z}
+\]
+\end{minted}
+\[
+a=\frac{
+	\splitfrac{xy + xy + xy + xy + xy}
+	{+ xy + xy + xy + xy}
+}
+{z}
+=\frac{
+	\splitdfrac{xy + xy + xy + xy + xy}
+	{+ xy + xy + xy + xy}
+}
+{z}
+\]
+%\begin{codeshow}
+%	\[
+%	a=\frac{
+%		\splitfrac{xy + xy + xy + xy + xy}
+%		{+ xy + xy + xy + xy}
+%	}
+%	{z}
+%	\]
+%\end{codeshow}
+%\begin{codeshow}
+%	\[
+%	a=\frac{
+%		\splitdfrac{xy + xy + xy + xy + xy}
+%		{+ xy + xy + xy + xy}
+%	}
+%	{z}
+%	\]
+%\end{codeshow}
+
+
+\end{document} 
+=======
 	如何绘制流程图\index{流程图}
 \end{qst}
 \ans 使用TiKZ和Pstricks
@@ -62,3 +333,4 @@
 \end{document}
 \end{minted}
 \end{document}
+>>>>>>> master
