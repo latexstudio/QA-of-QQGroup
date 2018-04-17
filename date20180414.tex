@@ -1,5 +1,6 @@
 % !Mode:: "TeX:UTF-8"
 \documentclass[QAofGroup.tex]{subfiles}
+<<<<<<< HEAD
 \begin{filecontents*}{liuchengtu1.tex}
 \documentclass{standalone}
 \usepackage{ctex}
@@ -132,6 +133,8 @@
 	\end{tikzpicture}
 \end{document}
 \end{filecontents*}	
+=======
+>>>>>>> master
 
 \begin{document}
 %-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -144,6 +147,7 @@
 \chapter{20180414}\label{ch180414}
 %----------------------------------------------------------------------------------------
 \begin{qst}\label{Q2018041401}
+<<<<<<< HEAD
 	如何绘制流程图\index{流程图}?
 \end{qst}
 \ans 可以使用TiKZ和Pstricks.
@@ -278,3 +282,55 @@ a=\frac{
 
 
 \end{document} 
+=======
+	如何绘制流程图\index{流程图}
+\end{qst}
+\ans 使用TiKZ和Pstricks
+\begin{minted}[breaklines]{tex}
+\documentclass{ctexart}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{setspace}
+
+% 流程图定义基本形状
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width = 1em, minimum height=0.8cm,text centered, draw = black]
+\tikzstyle{io} = [trapezium, trapezium left angle=80, trapezium right angle=100, minimum width=1.5cm, minimum height=0.8cm, text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=1em, minimum height=0.8cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, aspect = 0.3, text centered, draw=black]
+% 箭头形式
+\tikzstyle{arrow} = [->,>=stealth]
+
+\begin{document}
+
+\begin{figure}[!htb]
+\centering
+\zihao{5}
+
+
+\begin{tikzpicture}[node distance=0.5cm]
+%定义流程图具体形状
+\node[startstop](start){\parbox{1em}{初始结构}};
+\node[process, right of = start, xshift = 1.6cm](ganxi){\parbox{1em}{杆系结构\end{spacing}}};
+\node[process, right  of = ganxi, xshift = 1.8cm](lianxuti){\parbox{1em}{连续体结构}};
+\node[decision, right of = lianxuti, xshift = 4.5cm](sltj){\parbox{1em}{控制条件}};
+\node[startstop, right of = sltj, xshift = 2.5cm](out1){\parbox{1em}{新结构}};
+\coordinate (point1) at (6cm, -3cm);
+\coordinate (point2) at (3.15cm, 0cm);
+
+%连接具体形状
+\draw [arrow] (start) -- (ganxi);
+\draw [arrow] (ganxi) -- (lianxuti);
+\draw [arrow] (lianxuti) --node [above] {消除、增殖} (sltj);
+\draw [arrow](sltj) --node [above] {是} (out1);
+\draw (sltj) |-node [above,xshift=-3.5cm] {否} (point1);
+\draw [arrow](point1) -| (point2);
+\end{tikzpicture}
+\vspace{0.5em}
+\caption{基本思路流程图}
+\label{fig:silu}
+\end{figure}
+
+\end{document}
+\end{minted}
+\end{document}
+>>>>>>> master
