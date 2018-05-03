@@ -28,11 +28,19 @@
 \usepackage{minted}
 \newcommand{\mtl}[1]{\mintinline{tex}|#1|}
 \newcommand{\mt}[1]{\mint[breaklines]{tex}|#1|}
+\newenvironment{mtd}
+{\VerbatimEnvironment\begin{minted}[mathescape,
+	linenos,
+	numbersep=5pt,
+	gobble=0,
+	frame=lines,
+	framesep=2mm]{tex}}
+	{\end{minted}}
 \usepackage{filecontents}
 
 \usepackage{subfiles} % Required for use with SageMath Cloud
 \usepackage{tabularx} % 绘制表格
-
+\usepackage{multirow} % 跨行表格
 \usepackage{xcolor} % Required for specifying colors by name
 \definecolor{ocre}{RGB}{0,126,196} % Define the orange color used for highlighting throughout the book
 

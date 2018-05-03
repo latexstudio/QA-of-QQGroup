@@ -5,6 +5,14 @@
 \usepackage{minted} % 提供代码抄录环境minted，行间单行抄录mint，行内抄录mintinline
 \newcommand{\mtl}[1]{\mintinline{tex}|#1|}
 \newcommand{\mt}[1]{\mint[breaklines]{tex}|#1|}
+\newenvironment{mtd}
+{\VerbatimEnvironment\begin{minted}[mathescape,
+	linenos,
+	numbersep=5pt,
+	gobble=0,
+	frame=lines,
+	framesep=2mm]{tex}}
+	{\end{minted}}
 \usepackage{filecontents} % 提供导言区附加子文档的环境
 \usepackage{amsmath} % 常用数学公式环境
 \usepackage{mathtools} % 扩展了amsmath宏包
@@ -13,6 +21,7 @@
 \usepackage{tkz-euclide} % 常用几何图库
 \usepackage{colortbl} % 彩色表格
 \usepackage{tabularx} % 绘制表格
+\usepackage{multirow} % 跨行表格
 \usepackage{xcolor} % Required for specifying colors by name
 \definecolor{ocre}{RGB}{0,126,196} % Define the orange color used for highlighting throughout the book
 
@@ -63,15 +72,9 @@ linewidth=4pt]{essentialqBox}
 \usepackage{hyperref} % 提供交叉引用等的超链接功能
 \hypersetup{%
 	hidelinks,        % 隐藏链接，不显示链接的颜色及边框
-<<<<<<< HEAD
 %	backref=true,     % 反向链接，返回引用处所在节，默认只有正向引用
 %	pagebackref=true, % 反向链接，返回引用处所在页，默认只有正向引用
 %	hyperindex=true,  % 生成索引的页码链接，默认生成
-=======
-	backref=true,     % 反向链接，返回引用处所在节，默认只有正向引用
-%	pagebackref=true, % 反向链接，返回引用处所在页，默认只有正向引用
-	hyperindex=true,  % 生成索引的页码链接，默认生成
->>>>>>> master
 	colorlinks=true,  % 链接改为彩色显示，默认为红色边框
 	breaklinks=true,  % 允许链接折行，默认不允许
 	urlcolor= ocre,   % 网址链接的颜色，默认为magenta
